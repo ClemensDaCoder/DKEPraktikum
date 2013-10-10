@@ -15,7 +15,7 @@ public class Splitter {
 		
 		DefaultHandler2 dh = new DblpHandler();
 		xr.setContentHandler(dh);
-		xr.parse(new InputSource("D:/Uni/DKE Praktikum/dblp.xml"));
+		xr.parse(new InputSource("test.xml"));
 	}
 
 
