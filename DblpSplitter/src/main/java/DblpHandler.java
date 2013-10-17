@@ -10,7 +10,12 @@ import org.xml.sax.SAXException;
 import org.xml.sax.ext.DefaultHandler2;
 
 
-/**
+/** Splits content of given dblp xml file into multiple subfiles. 
+ *  One for each category of publication.
+ *  <p>
+ *  e.g. all article-elements are written to article.xml, all book-elements to book.xml
+ *   
+ * @see http://www.informatik.uni-trier.de/~ley/db/ 
  * @author Michael Weichselbaumer
  * @autho Manuel Hochreiter
  *
@@ -24,14 +29,12 @@ public class DblpHandler extends DefaultHandler2 {
 
 	//maps document type and file location for output
 	private Map<String, File> docTypes;
-
-	/*
-	 * (non-Javadoc)
+	
+	/** 
 	 * 
-	 * @see org.xml.sax.helpers.DefaultHandler#startDocument()
 	 */
-	@Override
-	public void startDocument() {
+	DblpHandler() {
+		super();
 		docTypes = new HashMap<String, File>();
 		docTypes.put("article", new File("article.xml"));
 		docTypes.put("book", new File("book.xml"));
@@ -42,6 +45,14 @@ public class DblpHandler extends DefaultHandler2 {
 		docTypes.put("proceedings", new File("proceedings.xml"));
 		docTypes.put("publication", new File("publication.xml"));
 		docTypes.put("www", new File("www.xml"));
+	}
+
+	/** {@inheritDoc}
+	 * 
+	 */
+	@Override
+	public void startDocument() {
+		
 
 		// delete existing xml files
 		for (Map.Entry<String, File> d : docTypes.entrySet()) {
