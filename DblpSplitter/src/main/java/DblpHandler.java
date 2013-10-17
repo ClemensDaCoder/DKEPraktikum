@@ -24,7 +24,7 @@ public class DblpHandler extends DefaultHandler2 {
 	private Article article;
 	private List<Article> articles;
 	
-	private StringBuffer nodeValue = new StringBuffer(1024);
+	private StringBuffer document = new StringBuffer(1024);
 	
 	private FileOutputStream output;
 	
@@ -96,24 +96,24 @@ public class DblpHandler extends DefaultHandler2 {
 		} else if (name.equalsIgnoreCase("www")) {
 			newDocumentType(name, atts);
 		} else {
-			nodeValue.append("<" + name + ">");
+			document.append("<" + name + ">");
 		}
 	}
 
 	private void newDocumentType(String name, Attributes atts) {
-		nodeValue.setLength(0);
-		nodeValue.append("<" + name);
+		document.setLength(0);
+		document.append("<" + name);
 		//Attributes
 		for(int i =0;i<atts.getLength();i++){
-			nodeValue.append(" " + atts.getLocalName(i) + "=\"" + atts.getValue(i) + "\"");
+			document.append(" " + atts.getLocalName(i) + "=\"" + atts.getValue(i) + "\"");
 		}
-		nodeValue.append(">");
+		document.append(">");
 	}
 	
 	@Override
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
-		nodeValue.append("</" + localName + ">");
+		document.append("</" + localName + ">");
 		
 		if(localName.equalsIgnoreCase("article")){
 			writeToFile(new File(docTypes.get("article")));
@@ -137,12 +137,12 @@ public class DblpHandler extends DefaultHandler2 {
 	}
 
 	private void writeToFile(File file) {
-		nodeValue.append("\n");
+		document.append("\n");
 		try {
 			output = new FileOutputStream(file, true);
-			output.write(nodeValue.toString().getBytes());
+			output.write(document.toString().getBytes());
 			output.close();
-			nodeValue.setLength(0);
+			document.setLength(0);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}catch (IOException e) {
@@ -152,7 +152,7 @@ public class DblpHandler extends DefaultHandler2 {
 
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
-		nodeValue.append(ch, start, length);
+		document.append(ch, start, length);
 	}
 	
 }
