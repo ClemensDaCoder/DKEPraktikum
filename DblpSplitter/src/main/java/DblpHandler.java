@@ -17,10 +17,12 @@ import org.xml.sax.ext.DefaultHandler2;
  */
 public class DblpHandler extends DefaultHandler2 {
 
-	private StringBuffer nodeValue = new StringBuffer(1024);
+	//contains content of "main element" node
+	private StringBuffer nodeContent = new StringBuffer(1024);
 
 	private FileOutputStream output;
 
+	//maps document type and file location for output
 	private Map<String, File> docTypes;
 
 	/*
@@ -50,7 +52,7 @@ public class DblpHandler extends DefaultHandler2 {
 	/**
 	 * {@inheritDoc}
 	 * <p>
-	 * In case of an element interesting for us .. we do something
+	 * In case of an element interesting, newDocumetType method is called
 	 */
 	@Override
 	public void startElement(String uri, String name, String qName,	Attributes atts) {
@@ -58,45 +60,53 @@ public class DblpHandler extends DefaultHandler2 {
 			newDocumentType(name, atts);
 		} else {
 			//for every element (all sub-elements) - just add to currently selected buffer
-			nodeValue.append("<" + name + ">");
+			nodeContent.append("<" + name + ">");
 		}
 	}
 
+	/**
+	 * resets StringBuffer for node content and writes first tag with attributes
+	 * @param name
+	 * @param atts
+	 */
 	private void newDocumentType(String name, Attributes atts) {
 		//reset content of buffer
-		nodeValue.setLength(0);
+		nodeContent.setLength(0);
 		//put element in buffer
-		nodeValue.append("<" + name);
+		nodeContent.append("<" + name);
 		// put attributes in buffer
 		for (int i = 0; i < atts.getLength(); i++) {
-			nodeValue.append(" " + atts.getLocalName(i) + "=\"" 	+ atts.getValue(i) + "\"");
+			nodeContent.append(" " + atts.getLocalName(i) + "=\"" 	+ atts.getValue(i) + "\"");
 		}
 	}
 
+	/**
+	 * if element closes document node, write StringBuffer to file
+	 */
 	@Override
 	public void endElement(String uri, String localName, String qName)
 			throws SAXException {
 		// add closing tag for current element
-		nodeValue.append("</" + localName + ">");
+		nodeContent.append("</" + localName + ">");
 
-		//if element is one of the "main elements" - write to appropiate file
+		//if element is one of the "main elements" - write to appropriate file
 		if (docTypes.get(localName) != null) {
 			writeToFile(docTypes.get(localName));
 		}
 	}
 
 	/**
-	 * Appends content in {@code nodeValue} to {@code file} given as parameter.
+	 * Appends content in {@code nodeContent} to {@code file} given as parameter.
 	 * 
 	 * @param file
 	 *            content is appended to.
 	 */
 	private void writeToFile(File file) {
-		nodeValue.append("\n");
+		nodeContent.append("\n");
 		try {
 			output = new FileOutputStream(file, true);
-			output.write(nodeValue.toString().getBytes());
-			nodeValue.setLength(0);
+			output.write(nodeContent.toString().getBytes());
+			nodeContent.setLength(0);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -114,10 +124,12 @@ public class DblpHandler extends DefaultHandler2 {
 	 * {@inheritDoc}
 	 * 
 	 * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
+	 * 
+	 * adds content between the "main element" tags to buffer
 	 */
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		//write content of element into buffer
-		nodeValue.append(ch, start, length);
+		nodeContent.append(ch, start, length);
 	}
 }
