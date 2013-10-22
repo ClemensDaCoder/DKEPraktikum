@@ -123,7 +123,6 @@ public class DblpHandler extends DefaultHandler2 {
 				output = new FileOutputStream(file, true);
 				output.write("<dblp>\n".getBytes());
 			}
-			//write root tag
 			output.write(nodeContent.toString().getBytes());
 			nodeContent.setLength(0);
 		} catch (FileNotFoundException e) {
