@@ -87,6 +87,7 @@ public class DblpHandler extends DefaultHandler2 {
 		for (int i = 0; i < atts.getLength(); i++) {
 			nodeContent.append(" " + atts.getLocalName(i) + "=\"" 	+ atts.getValue(i) + "\"");
 		}
+		nodeContent.append(">");
 	}
 
 	/**
@@ -113,7 +114,13 @@ public class DblpHandler extends DefaultHandler2 {
 	private void writeToFile(File file) {
 		nodeContent.append("\n");
 		try {
-			output = new FileOutputStream(file, true);
+			//if file does not exists add root tag
+			if(file.exists())
+				output = new FileOutputStream(file, true);
+			else{
+				output = new FileOutputStream(file, true);
+				output.write("<dblp>\n".getBytes());
+			}
 			output.write(nodeContent.toString().getBytes());
 			nodeContent.setLength(0);
 		} catch (FileNotFoundException e) {
@@ -140,5 +147,32 @@ public class DblpHandler extends DefaultHandler2 {
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		//write content of element into buffer
 		nodeContent.append(ch, start, length);
+	}
+	
+	/**
+	 * 
+	 */
+	@Override
+	public void endDocument() throws SAXException {
+		//write closing tags
+		for (Map.Entry<String, File> d : docTypes.entrySet()) {
+			if(d.getValue().exists()){
+				try {
+					output = new FileOutputStream(d.getValue(), true);
+					output.write("</dblp>".getBytes());
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				} finally{
+					try {
+						output.close();
+					} catch (IOException e) {
+						//nothing to do
+					}
+				}
+			}
+				
+		}
 	}
 }
