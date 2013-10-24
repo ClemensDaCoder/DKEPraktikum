@@ -52,8 +52,6 @@ public class DblpHandler extends DefaultHandler2 {
 	 */
 	@Override
 	public void startDocument() {
-		
-
 		// delete existing xml files
 		for (Map.Entry<String, File> d : docTypes.entrySet()) {
 			d.getValue().delete();
