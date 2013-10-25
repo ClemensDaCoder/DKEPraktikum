@@ -121,7 +121,8 @@ public class DblpHandler extends DefaultHandler2 {
 				output = new FileOutputStream(file, true);
 			else{
 				output = new FileOutputStream(file, true);
-				output.write("<dblp>\n".getBytes());
+				String start = "<?xml version=\"1.0\" encoding=\"ISO-8859-15\"?> \n<dblp>\n ";
+				output.write(start.getBytes());
 			}
 			output.write(nodeContent.toString().getBytes());
 			nodeContent.setLength(0);
