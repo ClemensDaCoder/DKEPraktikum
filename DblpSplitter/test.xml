@@ -1,8 +1,8 @@
 <dblp>
   <article mdate="2002-01-03" key="persons/Codd71a">
-    <author>E. F. Codd</author>
+    <author>E. F. Codd &amp;</author>
     <title>Further Normalization of the Data Base Relational Model.</title>
-    <journal>IBM Research Report, San Jose, California</journal>
+    <journal>IBM Research Report, San Jose, California &lt; </journal>
     <volume>RJ909</volume>
     <month>August</month>
     <year>1971</year>
@@ -42,7 +42,7 @@
     <author>Werner John</author>
     <author>Dominik Ley</author>
     <author>Joachim Müller</author>
-    <title>ROSAR - Rule Oriented System for Analysis of Reflections on Printed Circuit Boards</title>
+    <title>ROSAR - Rule Oriented System  &amp; for Analysis of Reflections on Printed Circuit Boards</title>
     <pages>40-43</pages>
     <year>1994</year>
     <booktitle>Proc. 11th Int. Symposium on Electromagnetic Compatibility (EMC'94)</booktitle>
