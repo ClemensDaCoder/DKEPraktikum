@@ -4,7 +4,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import org.apache.commons.lang.StringEscapeUtils;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -75,8 +74,6 @@ public class DblpHandler extends DefaultHandler2 {
 			// for every element (all sub-elements) - just add to currently
 			// selected buffer
 			nodeContent.append("<" + name + ">");
-
-			// TODO: split pages-tag into from-to-tags
 		}
 	}
 
