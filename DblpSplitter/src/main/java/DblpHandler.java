@@ -144,12 +144,18 @@ public class DblpHandler extends DefaultHandler2 {
 	 * 
 	 * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
 	 * 
-	 * adds content between the "main element" tags to buffer
+	 * adds content between two tags to buffer
 	 */
 	@Override
 	public void characters(char[] ch, int start, int length) throws SAXException {
 		//write content of element into buffer
-		nodeContent.append(ch, start, length);
+		//nodeContent.append(ch, start, length);
+		for(int i=start;i<(start+length);i++){
+			char c = ch[i];
+			if(c =='"')
+				System.out.println("#");
+			nodeContent.append(ch[i]);
+		}
 	}
 	
 	/**
