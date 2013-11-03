@@ -23,7 +23,7 @@ public class Validator {
         Schema schema = schemaFactory.newSchema(schemaFile);
         javax.xml.validation.Validator validator = schema.newValidator();
 
-        try{
+        try {
             validator.validate(xmlFile);
             System.out.println(xmlFile.getSystemId() + " is valid");
         }

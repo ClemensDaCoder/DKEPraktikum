@@ -15,15 +15,16 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.ext.DefaultHandler2;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import filter.ArticleFilter;
-import filter.BookFilter;
-import filter.InProceedingsFilter;
-import filter.IncollectionFilter;
-import filter.MasterthesisFilter;
-import filter.PhdThesisFilter;
-import filter.ProceedingsFilter;
-import filter.PublicationFilter;
-import filter.WwwFilter;
+import filter.PagesFilter;
+import filter.publication.ArticleFilter;
+import filter.publication.BookFilter;
+import filter.publication.InProceedingsFilter;
+import filter.publication.IncollectionFilter;
+import filter.publication.MasterthesisFilter;
+import filter.publication.PhdThesisFilter;
+import filter.publication.ProceedingsFilter;
+import filter.publication.PublicationFilter;
+import filter.publication.WwwFilter;
 
 
 /** Splits dblp.xml file into several files (one per publication type). <p>
