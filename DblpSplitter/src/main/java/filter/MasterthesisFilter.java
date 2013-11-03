@@ -4,7 +4,7 @@ public class MasterthesisFilter extends PublicationFilter {
 
 	@Override
 	public String getPublicationTag() {
-		return "masterthesis";
+		return "mastersthesis";
 	}
 
 }
