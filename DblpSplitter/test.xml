@@ -1,7 +1,20 @@
 <dblp>
+  <article key="journals/tkde/PangZM13" mdate="2013-05-27">
+	<author>HweeHwa Pang</author>
+	<author>Jilian Zhang</author>
+	<author>Kyriakos Mouratidis</author>
+	<title>Enhancing Access Privacy of Range Retrievals over (&#120121;<sup>+</sup>)-Trees.</title>
+	<pages>1533-1547</pages>
+	<year>2013</year>
+	<volume>25</volume>
+	<journal>IEEE Trans. Knowl. Data Eng.</journal>
+	<number>7</number>
+	<ee>http://doi.ieeecomputersociety.org/10.1109/TKDE.2012.77</ee>
+	<url>db/journals/tkde/tkde25.html#PangZM13</url>
+  </article>
   <article mdate="2002-01-03" key="persons/Codd71a">
     <author>E. F. Codd &amp;</author>
-    <title>Further Normalization of the Data Base Relational Model.</title>
+    <title>Fürther Normalization of the Data Base Relational Model.</title>
     <journal>IBM Research Report, San Jose, California &lt; </journal>
     <pages>55-59</pages>
     <volume>RJ909</volume>
