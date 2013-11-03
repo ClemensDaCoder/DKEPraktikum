@@ -49,20 +49,28 @@ public class Splitter {
 		splitDblpFile(dblpFile, new WwwFilter(), new FileOutputStream("www.xml"));
 	}
 		
-	public static void splitDblpFile(InputSource dblpFile, PublicationFilter filter, OutputStream splittedFile) throws SAXException, TransformerConfigurationException, TransformerException {
+	/** Extracts all elements matching given  {@code publicationFilter} from  {@code dblpFile} into {@code splittedFile} 
+	 * @param dblpFile
+	 * @param publicationFilter
+	 * @param splittedFile
+	 * @throws SAXException
+	 * @throws TransformerConfigurationException
+	 * @throws TransformerException
+	 */
+	public static void splitDblpFile(InputSource dblpFile, PublicationFilter publicationFilter, OutputStream splittedFile) throws SAXException, TransformerConfigurationException, TransformerException {
 		DefaultHandler2 dh = new DefaultHandler2();
 		//pagesFilter is for turning "pages" element into "from" and "to" elements
 		XMLFilter pagesFilter = new PagesFilter();
 		XMLReader xr = XMLReaderFactory.createXMLReader();
 		
-		filter.setContentHandler(dh);
-		filter.setParent(xr);
-		pagesFilter.setParent(filter);
+		publicationFilter.setContentHandler(dh);
+		publicationFilter.setParent(xr);
+		pagesFilter.setParent(publicationFilter);
 		
 		//Now let's throw in a transformer to fix problems this problem: http://www.dragishak.com/?p=131
 		StreamResult result = new StreamResult(splittedFile);
 		TransformerFactory transformerFactory = TransformerFactory.newInstance("com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl",Splitter.class.getClassLoader());
-		SAXSource transformSource = new SAXSource(filter, dblpFile);
+		SAXSource transformSource = new SAXSource(publicationFilter, dblpFile);
 		transformerFactory.newTransformer().transform(transformSource, result);
 	}
 

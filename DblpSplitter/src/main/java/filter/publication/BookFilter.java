@@ -1,5 +1,9 @@
 package filter.publication;
 
+/**
+ * @author Michael Weichselbaumer
+ *
+ */
 public class BookFilter extends PublicationFilter {
 
 	@Override

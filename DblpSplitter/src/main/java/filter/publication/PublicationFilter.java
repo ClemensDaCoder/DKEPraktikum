@@ -4,7 +4,8 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.XMLFilterImpl;
 
-/**
+/** Filters for publication elements (and their respective sub-elements) determined by {@code getPublicationTag()}
+ * 
  * @author Michael Weichselbaumer
  *
  */
@@ -43,8 +44,7 @@ public abstract class PublicationFilter extends XMLFilterImpl {
 		}
 	}
 	
-	/** If character sequence belongs to {@code pages} element, page information is extracted
-	 *  in order to be put in replacement elements {@code from} and {@code to}.
+	/** If character sequence belongs to {@code publicationTag} element it is processed, otherwise it is left out.
 	 * <p>
 	 * @see org.xml.sax.helpers.XMLFilterImpl#characters(char[], int, int)
 	 */
@@ -55,6 +55,9 @@ public abstract class PublicationFilter extends XMLFilterImpl {
 		} 
 	}
 	
+	/**
+	 * @return name of publication tag to be filtered for.
+	 */
 	public abstract String getPublicationTag();
 
 }
