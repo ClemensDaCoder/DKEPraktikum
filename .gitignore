@@ -1,3 +1,8 @@
 DblpSplitter/article.xml
 DblpSplitter/inproceedings.xml
 DblpSplitter/www.xml
+DblpSplitter/book.xml
+DblpSplitter/incollection.xml
+DblpSplitter/masterthesis.xml
+DblpSplitter/phdthesis.xml
+DblpSplitter/proceedings.xml
