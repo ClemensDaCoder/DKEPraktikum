@@ -17,7 +17,7 @@ public class Validator {
 	public static void main (String args []) throws SAXException, IOException {
 		
 		Source schemaFile = new StreamSource(new File("ctest.xsd"));
-        Source xmlFile = new StreamSource(new File("../DblpSplitter/inproceedings.xml"));
+        Source xmlFile = new StreamSource(new File("../DblpSplitter/article.xml"));
 
         SchemaFactory schemaFactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         Schema schema = schemaFactory.newSchema(schemaFile);

@@ -34,6 +34,7 @@
           <xs:element ref="volume"/>
           <xs:element minOccurs ="1" ref="year"/>
           <xs:element ref="journal"/>
+		  <xs:element ref="cite" />
         </xs:choice>
         <xs:element minOccurs="0" ref="note"/>
       </xs:sequence>
@@ -92,19 +93,23 @@
        <xs:attributeGroup ref="attributegrmp"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="mastersthesis">
+<xs:element name="mastersthesis">
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="author"/>
         <xs:element ref="title"/>
         <xs:element ref="year"/>
         <xs:element ref="school"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="ee"/>
+          <xs:element ref="url"/>
+        </xs:choice>
       </xs:sequence>
       <xs:attribute name="key" use="required"/>
       <xs:attribute name="mdate" use="required" type="xs:NMTOKEN"/>
     </xs:complexType>
   </xs:element>
-  <xs:element name="phdthesis">
+  <xs:element name="phdthesis"> 
        <xs:complexType>
       <xs:sequence>
         <xs:element maxOccurs="unbounded" ref="author"/>
@@ -179,43 +184,56 @@
       <xs:attributeGroup ref="attributegr"/>
     </xs:complexType>
   </xs:element>
-  
   <xs:element name="author" type="xs:string"/>
   <xs:element name="editor" type="xs:string"/>
   <xs:element name="title">
     <xs:complexType mixed="true">
-      <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="sup"/>
-        <xs:element ref="i"/>
-        <xs:element ref="sub"/>
-      </xs:choice>
+		<xs:choice minOccurs ="0" maxOccurs="unbounded">
+        <xs:element ref="sup" minOccurs = "0"  maxOccurs="unbounded"/>
+        <xs:element ref="i" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="sub" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="tt" minOccurs = "0"  maxOccurs="unbounded"/>
+		</xs:choice>
     </xs:complexType>
   </xs:element>
   <xs:element name="i">
     <xs:complexType mixed="true">
-     <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="sup"/>
-        <xs:element ref="sub"/>
-		<xs:element ref="i"/>
-      </xs:choice>
+            		<xs:choice minOccurs ="0" maxOccurs="unbounded">
+             <xs:element ref="sup" minOccurs = "0"  maxOccurs="unbounded"/>
+        <xs:element ref="i" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="sub" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="tt" minOccurs = "0"  maxOccurs="unbounded"/>
+		</xs:choice>
     </xs:complexType>
   </xs:element>
   <xs:element name="sup">
     <xs:complexType mixed="true">
-     <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="sub"/>
-        <xs:element ref="i"/>
-		<xs:element ref="sup"/>
-      </xs:choice>
+		<xs:choice minOccurs ="0" maxOccurs="unbounded">
+              <xs:element ref="sup" minOccurs = "0"  maxOccurs="unbounded"/>
+        <xs:element ref="i" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="sub" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="tt" minOccurs = "0"  maxOccurs="unbounded"/>
+		</xs:choice>
     </xs:complexType>
   </xs:element>
    <xs:element name="sub">
     <xs:complexType mixed="true">
-     <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element ref="sup"/>
-        <xs:element ref="i"/>
-		<xs:element ref="sub"/>
-      </xs:choice>
+             		<xs:choice minOccurs ="0" maxOccurs="unbounded">
+              <xs:element ref="sup" minOccurs = "0"  maxOccurs="unbounded"/>
+        <xs:element ref="i" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="sub" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="tt" minOccurs = "0"  maxOccurs="unbounded"/>
+		</xs:choice>
+    </xs:complexType>
+  </xs:element>
+   <xs:element name="tt">
+    <xs:complexType mixed="true">
+         		<xs:choice minOccurs ="0" maxOccurs="unbounded">
+              <xs:element ref="sup" minOccurs = "0"  maxOccurs="unbounded"/>
+        <xs:element ref="i" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="sub" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="tt" minOccurs = "0"  maxOccurs="unbounded"/>
+		</xs:choice>
     </xs:complexType>
   </xs:element>
   <xs:element name="incollection">
@@ -250,12 +268,11 @@
 	  <xs:simpleType>
 		<xs:restriction base="xs:integer">
 		  <xs:minInclusive value="1900"/>
-		  <xs:maxInclusive value="2500"/>
+		  <xs:maxInclusive value="2999"/>
 		</xs:restriction>
 	  </xs:simpleType>
   </xs:element>
-  <xs:element name="volume" type="xs:string"/>
-  
+  <xs:element name="volume" type="xs:string"/> 
   <xs:element name="from" type="xs:string"/>
   <xs:element name="to" type="xs:string"/>
   <xs:element name="number" type="xs:string"/>
@@ -277,7 +294,7 @@
   <xs:element name="isbn">
   <xs:simpleType>
     <xs:restriction base="xs:string">
-      <xs:pattern value="[\d]*(-?[\d?]*)*X?"/>
+      <!-- <xs:pattern value="[\d]*(-?[\d?]*)*X?"/> -->
     </xs:restriction>
   </xs:simpleType>
 </xs:element> 
@@ -286,7 +303,7 @@
    <xs:element name="journal" type="xs:string"/>
    <xs:element name="cite" type= "xs:string"/>
     <xs:element name="address" type= "xs:string"/>
-   <xs:element name="crossref" type= "xs:string"/>
+   <xs:element name="crossref" type= "xs:string"/> 
    
    <xs:attributeGroup name="attributegrmp">
   <xs:attribute name="key" use="required" type="xs:string"/>
@@ -299,5 +316,14 @@
   <xs:attribute name="mdate" use = "required" type="xs:NMTOKEN"/>
   <xs:attribute name = "publtype"/>
 </xs:attributeGroup>
-      
+
+<xs:group name="titlegroup">
+      <xs:sequence>
+        <xs:element ref="sup" minOccurs = "0"  maxOccurs="unbounded"/>
+        <xs:element ref="i" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="sub" minOccurs = "0"  maxOccurs="unbounded"/>
+		<xs:element ref="tt" minOccurs = "0"  maxOccurs="unbounded"/>
+      </xs:sequence>
+</xs:group>
+
 </xs:schema>
