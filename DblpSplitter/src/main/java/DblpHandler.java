@@ -41,7 +41,7 @@ public class DblpHandler extends DefaultHandler2 {
 		docTypes.put("book", new File("book.xml"));
 		docTypes.put("incollection", new File("incollection.xml"));
 		docTypes.put("inproceedings", new File("inproceedings.xml"));
-		docTypes.put("masterthesis", new File("masterthesis.xml"));
+		docTypes.put("mastersthesis", new File("mastersthesis.xml"));
 		docTypes.put("phdthesis", new File("phdthesis.xml"));
 		docTypes.put("proceedings", new File("proceedings.xml"));
 		docTypes.put("publication", new File("publication.xml"));
