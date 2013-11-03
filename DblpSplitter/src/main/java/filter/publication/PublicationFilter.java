@@ -4,6 +4,10 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.XMLFilterImpl;
 
+/**
+ * @author Michael Weichselbaumer
+ *
+ */
 public abstract class PublicationFilter extends XMLFilterImpl {
 	
 	private boolean workingOnArticle = false;
