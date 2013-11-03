@@ -149,11 +149,7 @@ public class DblpHandler extends DefaultHandler2 {
 	 * 
 	 * @see org.xml.sax.helpers.DefaultHandler#characters(char[], int, int)
 	 * 
-<<<<<<< HEAD
-	 * adds content between two tags to buffer
-=======
-	 *      adds content between the tags to buffer
->>>>>>> branch 'master' of https://github.com/ClemensDaCoder/DKEPraktikum.git
+	 *	adds content between the tags to buffer
 	 */
 	@Override
 	public void characters(char[] ch, int start, int length)
@@ -164,7 +160,7 @@ public class DblpHandler extends DefaultHandler2 {
 	}
 
 	/**
-	 * 
+	 * write closing root tags to files
 	 */
 	@Override
 	public void endDocument() throws SAXException {

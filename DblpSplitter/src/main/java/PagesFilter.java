@@ -76,8 +76,13 @@ public class PagesFilter extends XMLFilterImpl {
 		if (workingOnPagesElement) {
 			String content = String.valueOf(ch, start, length);
 			int separatorIndex = content.indexOf('-'); 
-			pageFrom = content.substring(0, separatorIndex);
-			pageTo = content.substring(separatorIndex+1);
+			if(separatorIndex != -1){
+				pageFrom = content.substring(0, separatorIndex);
+				pageTo = content.substring(separatorIndex+1);
+			}else{
+				pageFrom = content;
+				pageTo = content;
+			}
 		} else {
 			super.characters(ch, start, length);
 		}

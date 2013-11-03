@@ -18,7 +18,7 @@ public class Splitter {
 		
 		filter.setContentHandler(dh);
 		filter.setParent(xr);
-		filter.parse(new InputSource("test.xml"));
+		filter.parse(new InputSource("dblp.xml"));
 //		xr.setFeature("http://apache.org/xml/features/continue-after-fatal-error", true);
 //		xr.parse(new InputSource("test.xml"));
 //		xr.parse(new InputSource("D:/Uni/DKE Praktikum/dblp.xml"));
