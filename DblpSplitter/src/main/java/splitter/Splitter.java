@@ -1,3 +1,4 @@
+package splitter;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -15,16 +16,16 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.ext.DefaultHandler2;
 import org.xml.sax.helpers.XMLReaderFactory;
 
-import filter.PagesFilter;
-import filter.publication.ArticleFilter;
-import filter.publication.BookFilter;
-import filter.publication.InProceedingsFilter;
-import filter.publication.IncollectionFilter;
-import filter.publication.MasterthesisFilter;
-import filter.publication.PhdThesisFilter;
-import filter.publication.ProceedingsFilter;
-import filter.publication.PublicationFilter;
-import filter.publication.WwwFilter;
+import splitter.filter.PagesFilter;
+import splitter.filter.publication.ArticleFilter;
+import splitter.filter.publication.BookFilter;
+import splitter.filter.publication.InProceedingsFilter;
+import splitter.filter.publication.IncollectionFilter;
+import splitter.filter.publication.MasterthesisFilter;
+import splitter.filter.publication.PhdThesisFilter;
+import splitter.filter.publication.ProceedingsFilter;
+import splitter.filter.publication.PublicationFilter;
+import splitter.filter.publication.WwwFilter;
 
 
 /** Splits dblp.xml file into several files (one per publication type). <p>

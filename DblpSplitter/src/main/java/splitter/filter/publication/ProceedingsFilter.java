@@ -1,4 +1,4 @@
-package filter.publication;
+package splitter.filter.publication;
 
 /**
  * @author Michael Weichselbaumer

@@ -1,4 +1,4 @@
-package filter.publication;
+package splitter.filter.publication;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
