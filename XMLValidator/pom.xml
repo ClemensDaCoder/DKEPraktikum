@@ -2,15 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>at.jku.dke</groupId>
-	<artifactId>Dblp_Splitter</artifactId>
+	<artifactId>XMLValidator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>DBLP XML File Splitter</name>
-
-	<dependencies>
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.3</version>
-		</dependency>
-	</dependencies>
+	<name>XML Validator</name>
 </project>
