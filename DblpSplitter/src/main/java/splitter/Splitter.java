@@ -37,8 +37,8 @@ import splitter.filter.publication.WwwFilter;
 public class Splitter {
 	
 	public static void main(String [] args) throws SAXException, IOException, TransformerException {
-//		InputSource dblpFile = new InputSource("test.xml");
-		InputSource dblpFile = new InputSource("D:/Uni/DKE Praktikum/dblp.xml");
+		InputSource dblpFile = new InputSource("test.xml");
+//		InputSource dblpFile = new InputSource("D:/Uni/DKE Praktikum/dblp.xml");
 			
 		splitDblpFile(dblpFile, new ArticleFilter(), new FileOutputStream("article.xml"));
 		splitDblpFile(dblpFile, new BookFilter(), new FileOutputStream("book.xml"));
@@ -71,7 +71,7 @@ public class Splitter {
 		//Now let's throw in a transformer to fix problems this problem: http://www.dragishak.com/?p=131
 		StreamResult result = new StreamResult(splittedFile);
 		TransformerFactory transformerFactory = TransformerFactory.newInstance("com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl",Splitter.class.getClassLoader());
-		SAXSource transformSource = new SAXSource(publicationFilter, dblpFile);
+		SAXSource transformSource = new SAXSource(pagesFilter, dblpFile);
 		transformerFactory.newTransformer().transform(transformSource, result);
 	}
 
