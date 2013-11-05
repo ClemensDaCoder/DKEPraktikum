@@ -1,91 +1,138 @@
 <dblp>
-  <article key="journals/tkde/PangZM13" mdate="2013-05-27">
-	<author>HweeHwa Pang</author>
-	<author>Jilian Zhang</author>
-	<author>Kyriakos Mouratidis</author>
-	<title>Enhancing Access Privacy of Range Retrievals over (&#120121;<sup>+</sup>)-Trees.</title>
-	<pages>1533-1547</pages>
-	<year>2013</year>
-	<volume>25</volume>
-	<journal>IEEE Trans. Knowl. Data Eng.</journal>
-	<number>7</number>
-	<ee>http://doi.ieeecomputersociety.org/10.1109/TKDE.2012.77</ee>
-	<url>db/journals/tkde/tkde25.html#PangZM13</url>
-  </article>
-  <article mdate="2002-01-03" key="persons/Codd71a">
-    <author>E. F. Codd &amp;</author>
-    <title>Fürther Normalization of the Data Base Relational Model.</title>
-    <journal>IBM Research Report, San Jose, California &lt; </journal>
-    <pages>55-59</pages>
-    <volume>RJ909</volume>
-    <month>August</month>
-    <year>1971</year>
-    <cdrom>ibmTR/rj909.pdf</cdrom>
-    <ee>db/labs/ibm/RJ909.html</ee>
-  </article>
-  <article mdate="2002-01-03" key="persons/Hall74">
-    <author>Patrick A. V. Hall</author>
-    <title>Common Subexpression Identification in General Algebraic Systems.</title>
-    <journal>Technical Rep. UKSC 0060, IBM United Kingdom Scientific Centre</journal>
-    <month>November</month>
-    <year>1974</year>
-  </article>
-  <article mdate="2002-01-03" key="persons/Tresch96">
-    <author>Markus Tresch</author>
-    <title>Principles of Distributed Object Database Languages.</title>
-    <journal>technical Report 248, ETH Z�rich, Dept. of Computer Science</journal>
-    <month>July</month>
-    <year>1996</year>
-  </article>
-  <article mdate="2002-01-03" key="persons/CoddD74">
-    <author>E. F. Codd</author>
-    <author>C. J. Date</author>
-    <title>Interactive Support for Non-Programmers: The Relational and Network Approaches.</title>
-    <journal>IBM Research Report, San Jose, California</journal>
-    <volume>RJ1400</volume>
-    <month>June</month>
-    <year>1974</year>
-  </article>
-  <www mdate="2005-10-06" key="persons/Ley2003">
-    <author>Michael Ley</author>
-    <title>ACM SIGMOD Contribution Award 2003 Acceptance Speech</title>
-    <year>2003</year>
-    <url>http://www.informatik.uni-trier.de/~ley/db/about/contributionaward03.html</url>
-  </www>
-  <inproceedings mdate="2002-01-03" key="persons/JohnLM94">
-    <author>Werner John</author>
-    <author>Dominik Ley</author>
-    <author>Joachim Müller</author>
-    <title>ROSAR - Rule Oriented System  &amp; for Analysis of Reflections on Printed Circuit Boards</title>
-    <pages>40-43</pages>
-    <year>1994</year>
-    <booktitle>Proc. 11th Int. Symposium on Electromagnetic Compatibility (EMC'94)</booktitle>
-  </inproceedings>
-  <article mdate="2002-01-03" key="persons/Codd71">
-    <author>E. F. Codd</author>
-    <title>Data Base Sublanguage Founded on the Relational Calculus.</title>
-    <journal>IBM Research Report, San Jose, California</journal>
-    <month>July</month>
-    <volume>RJ893</volume>
-    <year>1971</year>
-  </article>
-  <article mdate="2002-01-03" key="persons/Codd72">
-    <author>E. F. Codd</author>
-    <title>Relational Completeness of Data Base Sublanguages.</title>
-    <journal>In: R. Rustin (ed.): Database Systems: 65-98, Prentice Hall and IBM Research Report RJ 987, San Jose, California</journal>
-    <month>March</month>
-    <year>1972</year>
-    <cdrom>ibmTR/rj987.pdf</cdrom>
-    <ee>db/labs/ibm/RJ987.html</ee>
-  </article>
-  <article mdate="2002-01-03" key="persons/Codd69">
-    <author>E. F. Codd</author>
-    <title>Derivability, Redundancy and Consistency of Relations Stored in Large Data Banks.</title>
-    <journal>IBM Research Report, San Jose, California</journal>
-    <volume>RJ599</volume>
-    <month>August</month>
-    <year>1969</year>
-    <cdrom>ibmTR/rj599.pdf</cdrom>
-    <ee>db/labs/ibm/RJ599.html</ee>
-  </article>
+	<proceedings mdate="2011-12-29" key="tr/trier/MI99-17"
+		publtype="informal publication">
+		<editor>Dieter Baum</editor>
+		<editor>Norbert Th. M&#252;ller</editor>
+		<editor>Richard R&#246;dler</editor>
+		<title>MMB &apos;99, Messung, Modellierung und Bewertung von Rechen-
+			und Kommunikationssystemen, 10. GI/NTG-Fachtagung, 22.-24. September
+			1999, Trier, Kurzbeitr&#228;ge und Toolbeschreibungen</title>
+		<isbn>978-3-642-29049-7</isbn>
+		<booktitle>MMB (Kurzvortr&#228;ge)</booktitle>
+		<series>Universit&#228;t Trier, Mathematik/Informatik,
+			Forschungsbericht</series>
+		<volume>99-16</volume>
+		<year>1999</year>
+		<url>db/conf/mmb/mmb99k.html</url>
+	</proceedings>
+	<proceedings mdate="2012-06-11" key="journals/tedu/2012-7">
+		<editor>Zhigeng Pan</editor>
+		<editor>Adrian David Cheok</editor>
+		<editor>Wolfgang M&#252;ller 0004</editor>
+		<editor>Maiga Chang</editor>
+		<editor>Mingmin Zhang</editor>
+		<title>Transactions on Edutainment VII</title>
+		<volume>7145</volume>
+		<year>2012</year>
+		<publisher>Springer</publisher>
+		<series>Lecture Notes in Computer Science</series>
+		<ee>http://dx.doi.org/10.1007/978-3-642-29050-3</ee>
+		<isbn>.kart</isbn>
+		<booktitle>T. Edutainment</booktitle>
+		<url>db/journals/tedu/tedu7.html</url>
+	</proceedings>
+	<article key="journals/tkde/PangZM13" mdate="2013-05-27">
+		<author>HweeHwa Pang</author>
+		<author>Jilian Zhang</author>
+		<author>Kyriakos Mouratidis</author>
+		<title>
+			Enhancing Access Privacy of Range Retrievals over (&#120121;
+			<sup>+</sup>
+			)-Trees.
+		</title>
+		<pages>1533-1547</pages>
+		<year>2013</year>
+		<volume>25</volume>
+		<journal>IEEE Trans. Knowl. Data Eng.</journal>
+		<number>7</number>
+		<ee>http://doi.ieeecomputersociety.org/10.1109/TKDE.2012.77</ee>
+		<url>db/journals/tkde/tkde25.html#PangZM13</url>
+	</article>
+	<article mdate="2002-01-03" key="persons/Codd71a">
+		<author>E. F. Codd &amp;</author>
+		<title>Fürther Normalization of the Data Base Relational Model.
+		</title>
+		<journal>IBM Research Report, San Jose, California &lt; </journal>
+		<pages>55-59</pages>
+		<volume>RJ909</volume>
+		<month>August</month>
+		<year>1971</year>
+		<cdrom>ibmTR/rj909.pdf</cdrom>
+		<ee>db/labs/ibm/RJ909.html</ee>
+	</article>
+	<article mdate="2002-01-03" key="persons/Hall74">
+		<author>Patrick A. V. Hall</author>
+		<title>Common Subexpression Identification in General Algebraic
+			Systems.</title>
+		<journal>Technical Rep. UKSC 0060, IBM United Kingdom Scientific
+			Centre</journal>
+		<month>November</month>
+		<year>1974</year>
+	</article>
+	<article mdate="2002-01-03" key="persons/Tresch96">
+		<author>Markus Tresch</author>
+		<title>Principles of Distributed Object Database Languages.</title>
+		<journal>technical Report 248, ETH Z�rich, Dept. of Computer Science
+		</journal>
+		<month>July</month>
+		<year>1996</year>
+	</article>
+	<article mdate="2002-01-03" key="persons/CoddD74">
+		<author>E. F. Codd</author>
+		<author>C. J. Date</author>
+		<title>Interactive Support for Non-Programmers: The Relational and
+			Network Approaches.</title>
+		<journal>IBM Research Report, San Jose, California</journal>
+		<volume>RJ1400</volume>
+		<month>June</month>
+		<year>1974</year>
+	</article>
+	<www mdate="2005-10-06" key="persons/Ley2003">
+		<author>Michael Ley</author>
+		<title>ACM SIGMOD Contribution Award 2003 Acceptance Speech</title>
+		<year>2003</year>
+		<url>http://www.informatik.uni-trier.de/~ley/db/about/contributionaward03.html
+		</url>
+	</www>
+	<inproceedings mdate="2002-01-03" key="persons/JohnLM94">
+		<author>Werner John</author>
+		<author>Dominik Ley</author>
+		<author>Joachim Müller</author>
+		<title>ROSAR - Rule Oriented System &amp; for Analysis of Reflections
+			on Printed Circuit Boards</title>
+		<pages>40-43</pages>
+		<year>1994</year>
+		<booktitle>Proc. 11th Int. Symposium on Electromagnetic Compatibility
+			(EMC'94)</booktitle>
+	</inproceedings>
+	<article mdate="2002-01-03" key="persons/Codd71">
+		<author>E. F. Codd</author>
+		<title>Data Base Sublanguage Founded on the Relational Calculus.
+		</title>
+		<journal>IBM Research Report, San Jose, California</journal>
+		<month>July</month>
+		<volume>RJ893</volume>
+		<year>1971</year>
+	</article>
+	<article mdate="2002-01-03" key="persons/Codd72">
+		<author>E. F. Codd</author>
+		<title>Relational Completeness of Data Base Sublanguages.</title>
+		<journal>In: R. Rustin (ed.): Database Systems: 65-98, Prentice Hall
+			and IBM Research Report RJ 987, San Jose, California</journal>
+		<month>March</month>
+		<year>1972</year>
+		<cdrom>ibmTR/rj987.pdf</cdrom>
+		<ee>db/labs/ibm/RJ987.html</ee>
+	</article>
+	<article mdate="2002-01-03" key="persons/Codd69">
+		<author>E. F. Codd</author>
+		<title>Derivability, Redundancy and Consistency of Relations Stored in
+			Large Data Banks.</title>
+		<journal>IBM Research Report, San Jose, California</journal>
+		<volume>RJ599</volume>
+		<month>August</month>
+		<year>1969</year>
+		<cdrom>ibmTR/rj599.pdf</cdrom>
+		<ee>db/labs/ibm/RJ599.html</ee>
+	</article>
 </dblp>
