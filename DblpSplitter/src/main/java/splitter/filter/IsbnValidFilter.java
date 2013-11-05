@@ -15,8 +15,7 @@ public class IsbnValidFilter extends XMLFilterImpl {
 	private static final Pattern ISBNPATTERN = Pattern.compile("[\\d]*(-?[\\d]*)*X?");
 	
 	
-	/** Checks if element is {@code pages} element and initiates transformation into {@code from} 
-	 * and {@code to} elements.
+	/** Checks if element is {@code isbn} element.
 	 * <p>
 	 * @see org.xml.sax.helpers.XMLFilterImpl#startElement(java.lang.String, java.lang.String, java.lang.String, org.xml.sax.Attributes)
 	 */
@@ -29,7 +28,7 @@ public class IsbnValidFilter extends XMLFilterImpl {
 		super.startElement(uri, localName, qName, atts);
 	}
 
-	/** Checks if ending element is {@code pages} element and passes its replacement elements to the specified {@code ContentHandler}. <p>
+	/** Checks if ending element is {@code isbn}. <p>
 	 * 
 	 * @see org.xml.sax.helpers.XMLFilterImpl#endElement(java.lang.String, java.lang.String, java.lang.String)
 	 */
@@ -42,9 +41,8 @@ public class IsbnValidFilter extends XMLFilterImpl {
 		super.endElement(uri, localName, qName);
 	}
 	
-	/** If character sequence belongs to {@code pages} element, page information is extracted
-	 *  in order to be put in replacement elements {@code from} and {@code to}.
-	 * <p>
+	/** If character sequence belongs to {@code isbn} element, isbn is validated against
+	 * regular expression. <p> If pattern does not match, isbn is filtered out.
 	 * @see org.xml.sax.helpers.XMLFilterImpl#characters(char[], int, int)
 	 */
 	@Override
