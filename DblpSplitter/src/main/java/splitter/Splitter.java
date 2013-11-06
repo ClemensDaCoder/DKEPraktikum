@@ -16,6 +16,7 @@ import org.xml.sax.XMLReader;
 import org.xml.sax.ext.DefaultHandler2;
 import org.xml.sax.helpers.XMLReaderFactory;
 
+import splitter.filter.EeValidFilter;
 import splitter.filter.IsbnValidFilter;
 import splitter.filter.PagesFilter;
 import splitter.filter.publication.ArticleFilter;
@@ -64,17 +65,19 @@ public class Splitter {
 		//pagesFilter is for turning "pages" element into "from" and "to" elements
 		XMLFilter pagesFilter = new PagesFilter();
 		XMLFilter isbnFilter = new IsbnValidFilter();
+		XMLFilter eeFilter = new EeValidFilter();
 		XMLReader xr = XMLReaderFactory.createXMLReader();
 		
 		publicationFilter.setContentHandler(dh);
 		publicationFilter.setParent(xr);
 		pagesFilter.setParent(publicationFilter);
 		isbnFilter.setParent(pagesFilter);
+		eeFilter.setParent(isbnFilter);
 		
 		//Now let's throw in a transformer to fix problems this problem: http://www.dragishak.com/?p=131
 		StreamResult result = new StreamResult(splittedFile);
 		TransformerFactory transformerFactory = TransformerFactory.newInstance("com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl",Splitter.class.getClassLoader());
-		SAXSource transformSource = new SAXSource(isbnFilter, dblpFile);
+		SAXSource transformSource = new SAXSource(eeFilter, dblpFile);
 		transformerFactory.newTransformer().transform(transformSource, result);
 	}
 
