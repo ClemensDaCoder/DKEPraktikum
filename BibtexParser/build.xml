@@ -1,0 +1,10 @@
+<project name="gen_article" default="compile_xsd">
+	<taskdef name="xjc" classname="com.sun.tools.xjc.XJCTask">
+		<classpath>
+			<fileset dir="lib/jaxb-ri-2.2.7/jaxb-ri-2.2.7/lib" includes="*.jar" excludes="ant.jar" />
+		</classpath>
+	</taskdef>
+	<target name="compile_xsd">
+		<xjc schema="schema/mastersthesis.xsd" destdir="src" package="mastersthesis" extension="true"/>
+	</target>
+</project>
