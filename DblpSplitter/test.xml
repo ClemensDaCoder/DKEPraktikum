@@ -1,3 +1,4 @@
+<!DOCTYPE dblp SYSTEM "dblp.dtd">
 <dblp>
 	<proceedings mdate="2011-12-29" key="tr/trier/MI99-17"
 		publtype="informal publication">
@@ -50,7 +51,7 @@
 	</article>
 	<article mdate="2002-01-03" key="persons/Codd71a">
 		<author>E. F. Codd &amp;</author>
-		<title>Fürther Normalization of the Data Base Relational Model.
+		<title>Fürther &uuml; Normalization of the Data Base Relational Model.
 		</title>
 		<journal>IBM Research Report, San Jose, California &lt; </journal>
 		<pages>55-59</pages>

@@ -3,6 +3,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -38,9 +41,9 @@ import splitter.filter.publication.WwwFilter;
  */
 public class Splitter {
 	
-	public static void main(String [] args) throws SAXException, IOException, TransformerException {
-		InputSource dblpFile = new InputSource("test.xml");
-//		InputSource dblpFile = new InputSource("D:/Uni/DKE Praktikum/dblp.xml");
+	public static void main(String [] args) throws SAXException, IOException, TransformerException, ParserConfigurationException {
+//		InputSource dblpFile = new InputSource("test.xml");
+		InputSource dblpFile = new InputSource("D:/Uni/DKE Praktikum/dblp.xml");
 			
 		splitDblpFile(dblpFile, new ArticleFilter(), new FileOutputStream("article.xml"));
 		splitDblpFile(dblpFile, new BookFilter(), new FileOutputStream("book.xml"));
@@ -59,24 +62,32 @@ public class Splitter {
 	 * @throws SAXException
 	 * @throws TransformerConfigurationException
 	 * @throws TransformerException
+	 * @throws ParserConfigurationException 
 	 */
-	public static void splitDblpFile(InputSource dblpFile, PublicationFilter publicationFilter, OutputStream splittedFile) throws SAXException, TransformerConfigurationException, TransformerException {
+	public static void splitDblpFile(InputSource dblpFile, PublicationFilter publicationFilter, OutputStream splittedFile) throws SAXException, TransformerConfigurationException, TransformerException, ParserConfigurationException {
+		SAXParserFactory saxFactory = SAXParserFactory.newInstance();
+		SAXParser parser = saxFactory.newSAXParser();
+		
+//		XMLReader xr = parser.getXMLReader();
+		
 		DefaultHandler2 dh = new DefaultHandler2();
 		//pagesFilter is for turning "pages" element into "from" and "to" elements
 		XMLFilter pagesFilter = new PagesFilter();
 		XMLFilter isbnFilter = new IsbnValidFilter();
 		XMLFilter eeFilter = new EeValidFilter();
 		XMLReader xr = XMLReaderFactory.createXMLReader();
-		
+		xr.setProperty("http://xml.org/sax/properties/lexical-handler", new UmlautHandler());
+
+//		publicationFilter.setProperty("http://xml.org/sax/properties/lexical-handler", new UmlautHandler());
 		publicationFilter.setContentHandler(dh);
 		publicationFilter.setParent(xr);
 		pagesFilter.setParent(publicationFilter);
 		isbnFilter.setParent(pagesFilter);
 		eeFilter.setParent(isbnFilter);
 		
-		//Now let's throw in a transformer to fix problems this problem: http://www.dragishak.com/?p=131
+		//Now let's throw in a transformer to fix this problem: http://www.dragishak.com/?p=131
 		StreamResult result = new StreamResult(splittedFile);
-		TransformerFactory transformerFactory = TransformerFactory.newInstance("com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl",Splitter.class.getClassLoader());
+		TransformerFactory transformerFactory = TransformerFactory.newInstance("com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl", Splitter.class.getClassLoader());
 		SAXSource transformSource = new SAXSource(eeFilter, dblpFile);
 		transformerFactory.newTransformer().transform(transformSource, result);
 	}
