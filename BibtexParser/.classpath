@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="schema/" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/JabRef-2.9.2-src.zip"/>
 	<classpathentry kind="lib" path="lib/jaxb-ri-2.2.7/jaxb-ri-2.2.7/lib/jaxb-api.jar"/>
@@ -13,5 +13,6 @@
 	<classpathentry kind="lib" path="lib/jaxb-ri-2.2.7/jaxb-ri-2.2.7/lib/jaxb-xjc-javadoc.jar"/>
 	<classpathentry kind="lib" path="lib/jaxb-ri-2.2.7/jaxb-ri-2.2.7/lib/jaxb-xjc.jar"/>
 	<classpathentry kind="lib" path="lib/JabRef-2.9.2.jar" sourcepath="lib/JabRef-2.9.2-src.zip"/>
+	<classpathentry kind="lib" path="lib/BaseX772.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

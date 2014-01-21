@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -19,6 +20,8 @@ import net.sf.jabref.BibtexEntry;
 import net.sf.jabref.imports.BibtexParser;
 import net.sf.jabref.imports.ParserResult;
 
+import org.basex.server.ClientQuery;
+import org.basex.server.ClientSession;
 import org.xml.sax.SAXException;
 
 import com.sun.org.apache.xerces.internal.jaxp.datatype.XMLGregorianCalendarImpl;
@@ -29,18 +32,34 @@ public class MyParser {
 	public static void main(String[] args) throws IOException,
 			SecurityException, NoSuchMethodException, IllegalArgumentException,
 			IllegalAccessException, InvocationTargetException, JAXBException, SAXException {
-		
-		//select file with bibtex content
-		FileReader bla = new FileReader("sample/masterthesis.bib");
-		ParserResult result = BibtexParser.parse(bla);
-		BibtexDatabase database = result.getDatabase();
-		
 
+		String s = "@mastersthesis{DBLP:mastersthesis/jku/kingofkingz,"+
+			"author = {M.K.M Weichselkaiserbaumreiter},"+
+			"title = {Analyse der thermodynamischen Eigenschaften von IM},"+
+			"year = {2014},"+
+			"school = {JKU},"+
+			"ee = {http://www.jku.at},"+
+			"mdate = {2014-01-16},"+
+			"key = {phd/Weichselkaiserbaumreiter} }";
+		
+		new MyParser().addEntry(s);
+	}
+	
+	public void addEntry(String bibtexAsString) throws IOException,
+			SecurityException, NoSuchMethodException, IllegalArgumentException,
+			IllegalAccessException, InvocationTargetException, JAXBException, SAXException{
+		
+//		//select file with bibtex content
+//		FileReader bla = new FileReader("sample/masterthesis.bib");
+//		ParserResult result = BibtexParser.parse(bla);
+//		BibtexDatabase database = result.getDatabase();
+		
 		//create Objectfactory for parent & child elements
 		ObjectFactory factory = new mastersthesis.ObjectFactory();
 		Mastertheseses root = factory.createMastertheseses();
 		
-		for (BibtexEntry e : database.getEntries()) {
+//		for (BibtexEntry e : database.getEntries()) {
+		for (BibtexEntry e : BibtexParser.fromString(bibtexAsString)) {
 			System.out.println(e.getType().getName());
 			Mastersthesis mastersThesis = factory.createMastersthesis();
 
@@ -70,6 +89,24 @@ public class MyParser {
 		Marshaller m = context.createMarshaller();
 		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		m.setSchema(sf.newSchema(new File("schema/mastersthesis.xsd")));
-		m.marshal(root, new File("sample/masterstheseses.xml"));
+		//m.marshal(root, new File("sample/masterstheseses.xml"));
+		StringWriter sw = new StringWriter();
+		m.marshal(root, sw);
+		
+		String s = sw.toString();
+		//without processing instructions
+		s=s.substring(s.indexOf("?>")+2);
+		System.out.println(s);
+		
+//		ClientSession session = new ClientSession("localhost", 1984, "admin", "admin");
+//		session.execute("CREATE DB mastertheseses");
+//		session.execute("XQUERY db:add('mastertheseses', document{" + s + "}, 'bla.xml')");
+		
+		//insert node <thema titel="{$name}"> </thema> into $db/kategorie,
+		
+//		String queryString = "let $db := db:open(DKE5)" + 
+//				" return insert node " + s + " into $db/kategorie";
+//		ClientQuery query = session.query(queryString);
+//		query.execute();
 	}
 }
