@@ -98,9 +98,12 @@ public class MyParser {
 		for (Mastersthesis thesis : root) {
 			StringWriter sw = new StringWriter();
 			m.marshal(thesis, sw);
-			System.out.println(sw.toString());
 			
-			String queryString = "insert node" + sw.toString() + " into db:open('dblpdatabase','masterthesis.xml')/dblp";
+			String s = sw.toString();
+			s = s.substring(s.indexOf("?>")+2);
+			System.out.println(s);
+			
+			String queryString = "insert node" + s + " into db:open('dblpdatabase','masterthesis.xml')/dblp";
 			ClientQuery query = session.query(queryString);
 			query.execute();
 			
