@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -10,6 +11,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.datatype.XMLGregorianCalendar;
+import javax.xml.transform.Source;
 import javax.xml.validation.SchemaFactory;
 
 import mastersthesis.Mastersthesis;
@@ -33,14 +35,14 @@ public class MyParser {
 			SecurityException, NoSuchMethodException, IllegalArgumentException,
 			IllegalAccessException, InvocationTargetException, JAXBException, SAXException {
 
-		String s = "@mastersthesis{DBLP:mastersthesis/jku/kingofkingz,"+
+		String s = "@mastersthesis{DBLP:mastersthesis/jku/kingofkingz1,"+
 			"author = {M.K.M Weichselkaiserbaumreiter},"+
 			"title = {Analyse der thermodynamischen Eigenschaften von IM},"+
 			"year = {2014},"+
 			"school = {JKU},"+
 			"ee = {http://www.jku.at},"+
 			"mdate = {2014-01-16},"+
-			"key = {phd/Weichselkaiserbaumreiter} }";
+			"key = {phd/Weichselkaiserbaumreiter1} }";
 		
 		new MyParser().addEntry(s);
 	}
@@ -88,25 +90,20 @@ public class MyParser {
 		JAXBContext context = JAXBContext.newInstance(Mastertheseses.class);
 		Marshaller m = context.createMarshaller();
 		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
-		m.setSchema(sf.newSchema(new File("schema/mastersthesis.xsd")));
+		m.setSchema(sf.newSchema(new File("resources/mastersthesis.xsd")));
 		//m.marshal(root, new File("sample/masterstheseses.xml"));
 		StringWriter sw = new StringWriter();
 		m.marshal(root, sw);
 		
 		String s = sw.toString();
-		//without processing instructions
-		s=s.substring(s.indexOf("?>")+2);
+		//remove processing instructions and root tags
+		s=s.substring(s.indexOf("?>")+18, s.length()-17);
 		System.out.println(s);
 		
-//		ClientSession session = new ClientSession("localhost", 1984, "admin", "admin");
-//		session.execute("CREATE DB mastertheseses");
-//		session.execute("XQUERY db:add('mastertheseses', document{" + s + "}, 'bla.xml')");
-		
-		//insert node <thema titel="{$name}"> </thema> into $db/kategorie,
-		
-//		String queryString = "let $db := db:open(DKE5)" + 
-//				" return insert node " + s + " into $db/kategorie";
-//		ClientQuery query = session.query(queryString);
-//		query.execute();
+		//add masterthesis to database
+		ClientSession session = new ClientSession("localhost", 1984, "admin", "admin");
+		String queryString = "insert node" + s + " into db:open('dblpdatabase','masterthesis.xml')/dblp";
+		ClientQuery query = session.query(queryString);
+		query.execute();
 	}
 }

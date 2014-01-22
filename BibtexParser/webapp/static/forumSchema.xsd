@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+
+	<xs:element name="kategorie">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="thema" type="Thema" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
+		</xs:complexType>
+		<xs:key name="thema_key">
+			<xs:selector xpath=".//thema"></xs:selector>
+			<xs:field xpath="@titel"></xs:field>
+		</xs:key>
+		<xs:key name="eintrag_key">
+			<xs:selector xpath=".//eintrag"></xs:selector>
+			<xs:field xpath="@id"></xs:field>
+			<xs:field xpath="@thema"></xs:field>
+		</xs:key>
+		<xs:keyref name="eintrag_keyref" refer="eintrag_key">
+			<xs:selector xpath=".//eintrag/text/eintrRef"></xs:selector>
+			<xs:field xpath="@eintragRef"></xs:field>
+			<xs:field xpath="@themaRef"></xs:field>
+		</xs:keyref>
+	</xs:element>
+	
+	<xs:complexType name="Thema">
+		<xs:sequence minOccurs="0" maxOccurs="unbounded">
+			<!-- <xs:element name="idletzterEintrag" type="xs:integer" minOccurs="1" maxOccurs="1"/> -->
+			<xs:element name="eintrag" type="Eintrag" minOccurs="0" maxOccurs="unbounded">
+				<xs:key name="antwort_key">
+					<xs:selector xpath="./eintrag"></xs:selector>
+					<xs:field xpath="@autor"></xs:field>
+				</xs:key>
+			</xs:element>
+		</xs:sequence>	
+		<xs:attribute name="titel" type="xs:string" use="required"></xs:attribute>
+	</xs:complexType>
+	
+	<xs:complexType name="Eintrag">
+		<xs:sequence minOccurs="1" maxOccurs="unbounded">
+				<xs:element name="text" minOccurs="1" maxOccurs="1">
+					<xs:complexType mixed="true">
+						<xs:sequence>
+							<xs:element name="eintrRef" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="eintragRef" type="xs:integer" use="required"></xs:attribute>
+									<xs:attribute name="themaRef" type="xs:string" use="optional"></xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			<xs:element name="eintrag" type="Eintrag" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:integer" use="required"></xs:attribute>
+		<xs:attribute name="autor" type="xs:string" use="required"></xs:attribute>
+		<xs:attribute name="thema" type="xs:string" use="required"></xs:attribute>
+	</xs:complexType>
+</xs:schema>
