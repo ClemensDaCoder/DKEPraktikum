@@ -4,15 +4,6 @@
 	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:version="1.0"
 	jaxb:extensionBindingPrefixes="xjc">
 
-<!-- <xs:element name="mastertheseses">
-		<xs:complexType>
-			<xs:sequence minOccurs="1" maxOccurs="unbounded">
-				<xs:element name="mastersthesis" type="mastersthesis" />
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element> -->
-
-
 	<xs:element name="mastersthesis">
 		<xs:complexType>
 			<xs:sequence minOccurs="1" maxOccurs="1">

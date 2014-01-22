@@ -80,6 +80,8 @@ public class MyParser {
 						} else {
 							m.invoke(mastersThesis, fieldValue);
 						}
+					} else {
+						throw new NoSuchMethodException("No value has been given for " + methodFieldName);
 					}
 				}
 			}
