@@ -977,7 +977,6 @@ declare
   %rest:path("/bibtex")
   function page:start1()
 {
-	let $schema := fn:doc("http://localhost:8984/static/forumSchema.xsd")
 	let $target := 'xml-stylesheet',
 	$content := 'href="../static/bibtex.xsl" type="text/xsl" '
 	let $cats := <bibtex> </bibtex>
