@@ -4,40 +4,42 @@
 	xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc" jaxb:version="1.0"
 	jaxb:extensionBindingPrefixes="xjc">
 
-	<xs:element name="mastertheseses">
+<!-- <xs:element name="mastertheseses">
 		<xs:complexType>
 			<xs:sequence minOccurs="1" maxOccurs="unbounded">
 				<xs:element name="mastersthesis" type="mastersthesis" />
 			</xs:sequence>
 		</xs:complexType>
+	</xs:element> -->
+
+
+	<xs:element name="mastersthesis">
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="1">
+				<xs:element name="author" type="xs:string" minOccurs="1"
+					maxOccurs="1"></xs:element>
+				<xs:element name="title" type="xs:string" minOccurs="1"
+					maxOccurs="1"></xs:element>
+				<xs:element name="year" type="xs:gYear" minOccurs="1"
+					maxOccurs="1"></xs:element>
+				<xs:element name="school" type="xs:string" minOccurs="1"
+					maxOccurs="1"></xs:element>
+				<xs:choice minOccurs="0" maxOccurs="2">
+					<xs:annotation>
+						<xs:appinfo>
+							<jaxb:property name="ExternalReference" />
+						</xs:appinfo>
+					</xs:annotation>
+					<!-- <xs:element name="url" type="xs:anyURI"/> <xs:element name="ee" 
+						type="xs:anyURI"/> -->
+					<xs:element name="Url" type="Url" />
+					<xs:element name="Ee" type="Ee" />
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="mdate" type="xs:date" use="required" />
+			<xs:attribute name="key" type="xs:string" use="required" />
+		</xs:complexType>
 	</xs:element>
-
-
-	<xs:complexType name="mastersthesis">
-		<xs:sequence minOccurs="1" maxOccurs="1">
-			<xs:element name="author" type="xs:string" minOccurs="1"
-				maxOccurs="1"></xs:element>
-			<xs:element name="title" type="xs:string" minOccurs="1"
-				maxOccurs="1"></xs:element>
-			<xs:element name="year" type="xs:gYear" minOccurs="1"
-				maxOccurs="1"></xs:element>
-			<xs:element name="school" type="xs:string" minOccurs="1"
-				maxOccurs="1"></xs:element>
-			<xs:choice minOccurs="0" maxOccurs="2">
-				<xs:annotation>
-					<xs:appinfo>
-						<jaxb:property name="ExternalReference" />
-					</xs:appinfo>
-				</xs:annotation>
-				<!-- <xs:element name="url" type="xs:anyURI"/> <xs:element name="ee" 
-					type="xs:anyURI"/> -->
-				<xs:element name="Url" type="Url" />
-				<xs:element name="Ee" type="Ee" />
-			</xs:choice>
-		</xs:sequence>
-		<xs:attribute name="mdate" type="xs:date" use="required" />
-		<xs:attribute name="key" type="xs:string" use="required" />
-	</xs:complexType>
 
 
 

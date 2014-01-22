@@ -5,6 +5,6 @@
 		</classpath>
 	</taskdef>
 	<target name="compile_xsd">
-		<xjc schema="schema/mastersthesis.xsd" destdir="src" package="mastersthesis" extension="true"/>
+		<xjc schema="resources/mastersthesis.xsd" destdir="src" package="mastersthesis" extension="true"/>
 	</target>
 </project>

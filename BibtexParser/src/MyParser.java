@@ -3,17 +3,21 @@ import java.io.IOException;
 import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.validation.SchemaFactory;
+
 import mastersthesis.Mastersthesis;
-import mastersthesis.Mastertheseses;
 import mastersthesis.ObjectFactory;
 import net.sf.jabref.BibtexEntry;
 import net.sf.jabref.imports.BibtexParser;
+
 import org.basex.server.ClientQuery;
 import org.basex.server.ClientSession;
 import org.xml.sax.SAXException;
@@ -50,7 +54,7 @@ public class MyParser {
 
 		// create Objectfactory for parent & child elements
 		ObjectFactory factory = new mastersthesis.ObjectFactory();
-		Mastertheseses root = factory.createMastertheseses();
+		List<Mastersthesis> root = new ArrayList<Mastersthesis>();
 
 		// for (BibtexEntry e : database.getEntries()) {
 		for (BibtexEntry e : BibtexParser.fromString(bibtexAsString)) {
@@ -80,10 +84,10 @@ public class MyParser {
 				}
 			}
 			// add one entry to root
-			root.getMastersthesis().add(mastersThesis);
+			root.add(mastersThesis);
 		}
 
-		JAXBContext context = JAXBContext.newInstance(Mastertheseses.class);
+		JAXBContext context = JAXBContext.newInstance(Mastersthesis.class);
 		Marshaller m = context.createMarshaller();
 		SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
 		m.setSchema(sf.newSchema(new File("resources/mastersthesis.xsd")));
@@ -91,7 +95,7 @@ public class MyParser {
 		
 		// add masterthesis to database
 		ClientSession session = new ClientSession("localhost", 1984, "admin", "admin");
-		for (Mastersthesis thesis :root.getMastersthesis()) {
+		for (Mastersthesis thesis : root) {
 			StringWriter sw = new StringWriter();
 			m.marshal(thesis, sw);
 			System.out.println(sw.toString());
