@@ -962,7 +962,7 @@ declare
   let $path    := file:temp-dir() || $name
   return (
   
-  parser:addEntry(convert:binary-to-string($content))
+  <response> {parser:addEntry(convert:binary-to-string($content)) } </response>
 	(: parser:addEntry($content)
 	
     file:write-binary($path, $content),
